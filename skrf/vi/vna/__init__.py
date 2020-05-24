@@ -14,15 +14,7 @@ New VNA drivers
 - VNA drivers will now have a common high level functionality across all vendors implemented in an ABCVNA class.
 - Different vendor drivers will implement their own mid level functionality as needed to implement the ABC class
 - The low level functions are all implemented as SCPI commands which have a new way of being generated and called
-
-Legacy vna module
-------------------------
-The old vna.py module containing drivers for PNA, PNA-X, HP8510, etc. will be available as vna_old.py and can be used as
-follows:
-
-::
-
-    from skrf.vi.vna_old import PNA
+- The new VNA submodule does not include drivers for HP VNA devices. Please refer to the legacy module. 
 
 Available VNAs
 ------------------
@@ -30,11 +22,15 @@ Available VNAs
 .. autosummary::
     :toctree: generated/
 
+    VNA
     PNA
-    ZVA40
-    HP8510C
-    HP8720
+    PNAX
+    ZVA
+    FieldFox
+
 '''
+
+
 
 from .abcvna import VNA
 from .keysight_pna import PNA, PNAX

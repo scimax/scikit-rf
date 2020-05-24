@@ -9,6 +9,7 @@ This module holds Virtual Instruments.
 
 
 .. automodule:: skrf.vi.vna
+.. automodule:: skrf.vi.vna_old
 .. automodule:: skrf.vi.sa
 .. automodule:: skrf.vi.stages
 

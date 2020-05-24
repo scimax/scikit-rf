@@ -1,25 +1,12 @@
 
 
 '''
-.. module:: skrf.vi.vna
+.. module:: skrf.vi.vna_old
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
-Vector Network Analyzers (:mod:`skrf.vi.vna`)
+Legacy VNA module (:mod:`skrf.vi.vna_old`)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. warning::
-
-    As of 2017.02 a new architecture for vna drivers is being implemented.
-
-New VNA drivers 
----------------
-
-- VNA drivers will now have a common high level functionality across all vendors implemented in an ABCVNA class.
-- Different vendor drivers will implement their own mid level functionality as needed to implement the ABC class
-- The low level functions are all implemented as SCPI commands which have a new way of being generated and called
-
-Legacy vna module
-------------------------
-The old vna.py module containing drivers for PNA, PNA-X, HP8510, etc. will be available as vna_old.py and can be used as
+The old vna_old.py module containing drivers for PNA, PNA-X, HP8510, etc. will be available as vna_old.py and can be used as
 follows:
 
 ::
@@ -298,6 +285,7 @@ class PNA(Driver):
         IMMediate - internal source sends continuous trigger signals
         MANual - sends one trigger signal when manually triggered from
             the front panel or INIT:IMM is sent.
+
         '''
         return self.ask('trigger:sequence:source?')
 
@@ -1929,7 +1917,7 @@ class VectorStar(PNA):
 
 class HP8510C(Driver):
     '''
-    good ole 8510
+    HP 8510 Vector Network Analyzer, Model C
     '''
     def __init__(self, address=16,**kwargs):
         Driver.__init__(self,'GPIB::'+str(address),**kwargs)
@@ -2078,6 +2066,10 @@ class HP8510C(Driver):
         return (forward,reverse)
 
 class HP8720(HP8510C):
+    '''
+    HP 8720 Vector Network Analyzer
+    '''
+
     def __init__(self, address=16,**kwargs):
         HP8510C.__init__(self,address,**kwargs)
     @property
